@@ -30,7 +30,7 @@ print(f'O servidor {HOST}:{PORT} está ativo aguardando conexões')
 
 # para termos varios clientes precisamos de uma loop infinito ($toDO00)
 conn, ender = sock.accept()
-print('Conexão em: 'ender)
+print('Conexão em: ', ender)
 
 # loop pra receber um buffer
 
