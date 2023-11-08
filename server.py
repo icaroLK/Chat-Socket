@@ -42,14 +42,15 @@ while True:
 # loop pra receber dados
 
     while True:
-        mesangem = conn.recv(1024).decode() #buffer aceita 1024 bytes (de 1024 em 1024)
-        mensagem = nome + " >> " + mensagem 
-        print(mensagem)
-        if not dados:
-            print('Fechando conexão')
+        try: 
+            mensagem = conn.recv(1024).decode() #buffer aceita 1024 bytes (de 1024 em 1024)
+            mensagemNome = nome + " >> " + mensagem 
+            print(mensagemNome)
+        except: 
+            print("ocorreu um erro")
             conn.close()
-            break
-        conn.sendall(dados)
+        break 
+      
 
 
 
