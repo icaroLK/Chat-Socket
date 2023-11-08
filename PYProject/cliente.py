@@ -1,4 +1,4 @@
- import socket
+import socket
 
 # PRECISAMOS NOS CONECTAR NO SERVIDOR
 HOST = '127.0.0.1'
