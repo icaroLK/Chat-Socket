@@ -29,17 +29,27 @@ print(f'O servidor {HOST}:{PORT} está ativo aguardando conexões')
 # aqui é o ponto onde conectamos um clinete
 
 # para termos varios clientes precisamos de uma loop infinito ($toDO00)
-conn, ender = sock.accept()
-print('Conexão em: ', ender)
+while True: 
+    try: 
+        conn, ender = sock.accept()
+        # ender[0] = IP ender[1] = PORTA
+        nome = conn.recv(50).decode() #receber dados em utf-8
+        print(f"Conexão em sucesso com o cliente: {nome} - {ender[0]}:{ender[1]}")
+    except:
+        print("algum erro de conexão ocorreu... tente novamente")
+        continue
 
-# loop pra receber um buffer
+# loop pra receber dados
 
-while True:
-    dados = conn.recv(1024) #buffer aceita 1024 bytes (de 1024 em 1024)
-    print(dados)
-    if not dados:
-        print('Fechando conexão')
-        conn.close()
-        break
-    conn.sendall(dados)
+    while True:
+        mesangem = conn.recv(1024).decode() #buffer aceita 1024 bytes (de 1024 em 1024)
+        mensagem = nome + " >> " + mensagem 
+        print(mensagem)
+        if not dados:
+            print('Fechando conexão')
+            conn.close()
+            break
+        conn.sendall(dados)
+
+
 
