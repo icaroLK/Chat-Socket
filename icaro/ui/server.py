@@ -1,8 +1,8 @@
 import threading
 import socket
 
-
-HOST = '127.0.0.1'
+# HOST = '127.0.0.1'
+HOST = '26.109.78.110'
 PORT = 9999
 
 
@@ -98,7 +98,7 @@ def receive():
 
         broadcast(f"{nickname} joined the chat!".encode('ascii'))
 
-        client.send("Connected to the server".encode('ascii'))
+        client.send("\n\n(Connected to the server)\n".encode('ascii'))
 
 
         '''Ja que precisamos conectar vários clientes ao mesmo tempo, precisamos atribuir uma thread pra cada um deles (pra fazer todas essa funções ao mesmo tempo)'''

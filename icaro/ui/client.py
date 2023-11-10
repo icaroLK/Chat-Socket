@@ -5,7 +5,9 @@ import tkinter.scrolledtext
 from tkinter import simpledialog
 
 
-HOST = '127.0.0.1'
+# HOST = '127.0.0.1'
+
+HOST = '26.109.78.110'
 PORT = 9999
 
 
@@ -101,52 +103,3 @@ class Client:
 client = Client(HOST, PORT)
 
 
-
-
-
-
-
-
-
-nickname = input('Choose a nickname: ')
-
-
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-client.connect((HOST, PORT))
-
-
-def receive():
-    while True:
-        try:
-            msg = client.recv(1024).decode('ascii')
-            if msg == 'NICK':
-                client.send(nickname.encode('ascii'))
-            else:
-                print(msg)
-        except:
-            print("Ocorreu um erro")
-            client.close()
-            break
-
-def write():
-    while True:
-        try:
-            msg = f"{nickname}: {input("")}"
-            client.send(msg.encode('ascii'))
-        except:
-            print("Ocorreu um erro")
-            client.close()
-            break
-
-
-
-
-'''Agora precisamos atribuir um thread pra cara uma dessas funções para que elas possam rodar ao mesmo tempo'''
-
-receive_thread = threading.Thread(target=receive)
-receive_thread.start()
-
-
-write_thread = threading.Thread(target=write)
-write_thread.start()
