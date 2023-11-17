@@ -7,7 +7,7 @@ from tkinter import simpledialog
 
 # HOST = '127.0.0.1'
 
-HOST = '26.109.78.110'
+HOST = '169.254.244.102'
 PORT = 9999
 
 
@@ -26,7 +26,7 @@ class Client:
         self.gui_done = False
 
         self.running = True
-
+        
         gui_thread = threading.Thread(target=self.gui_loop)
         gui_thread.start()
 
